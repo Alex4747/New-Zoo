@@ -1,7 +1,43 @@
-import { nanoid } from "nanoid";
+import { nanoid } from 'nanoid'
 
-import Lion from '../images/lion.png';
-import LionSound from '../audio/lion.mp3';
-import { createAction } from "@reduxjs/toolkit";
+export function feedingAnimal(animalId) {
+  return {
+    type: 'feedingAnimal',
+    payload: {
+      animalId,
+    },
+  };
+}
 
-// export const feedAnimal = createAction('animal/feedAnimal')
+export function changingHungerLevel(animalId) {
+  return {
+    type: 'changingHungerLevel',
+    payload: {
+      animalId,
+    },
+  };
+}
+
+export function addAnimal(animal) {
+  return {
+    type: 'addAnimal',
+    payload: {
+      animal: {
+        ...animal,
+        id: nanoid(),
+        hungerLevel: 100,
+        isFed: true,
+        isAlive: true,
+      },
+    },
+  };
+}
+
+export function deleteAnimal(animalId) {
+  return {
+    type: 'deleteAnimal',
+    payload: {
+      animalId,
+    },
+  };
+}
